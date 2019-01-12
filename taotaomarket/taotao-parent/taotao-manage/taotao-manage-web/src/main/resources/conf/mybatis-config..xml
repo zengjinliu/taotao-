@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+
+        <!-- 显示的指定每个我们需要更改配置的值，即使它是默认的。防止版本更新带来的问题 -->
+        <!-- 开启全局缓存(二级缓存配置) -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- 开启懒加载 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 使用按需加载 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"></property>
+            <property name="rowBoundsWithCount" value="true"/>
+        </plugin>
+        <plugin interceptor="com.github.abel533.mapperhelper.MapperInterceptor">
+            <property name="IDENTITY" value="MYSQL"/>
+            <property name="mappers" value="com.github.abel533.mapper.Mapper"/>
+        </plugin>
+    </plugins>
+</configuration>
