@@ -117,6 +117,18 @@
 		   type: "POST",
 		   url: "/rest/item",
 		   data: $("#itemAddForm").serialize(),
+			//符合restful风格的响应状态码
+			statusCode:{
+		       201:function () {
+				   $.messager.alert('提示','新增商品成功!')
+               },
+				400 : function () {
+                    $.messager.alert('提示','提交的参数不合法!')
+                },
+				500 : function () {
+                    $.messager.alert('提示','新增商品失败!')
+                }
+			},
 		   success: function(msg){
 			   $.messager.alert('提示','新增商品成功!');
 		   },
